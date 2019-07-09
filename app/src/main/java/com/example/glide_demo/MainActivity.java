@@ -76,21 +76,21 @@ public class MainActivity extends AppCompatActivity {
             myDataSet.add(new Store(url_image[i],"Image "+i));
         for(int i=4;i<=100;i++)
             myDataSet.add(new Store("https://via.placeholder.com/300/000000/FFFFFF/?text=demo"+i,"Image "+10+i));
-//        ListPreloader.PreloadSizeProvider sizeProvider =
-//                new FixedPreloadSizeProvider(imageWidthPixels, imageHeightPixels);
-//        PreloadModelProvider modelProvider = new PreloadModelProvider(myDataSet,getApplicationContext());
-//        RecyclerViewPreloader<Store> preloader = new RecyclerViewPreloader<Store>(
-//                Glide.with(this), modelProvider, sizeProvider, 30 /*maxPreload*/);
-//
-//
-//        recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
-//
-//        recyclerView.setHasFixedSize(true);
-//        layoutManager = new LinearLayoutManager(this);
-//        recyclerView.setLayoutManager(layoutManager);
-//        mAdapter = new MyAdapter(Glide.with(this),myDataSet,getApplicationContext());
-//       // recyclerView.addOnScrollListener(preloader);
-//        recyclerView.setAdapter(mAdapter);
+        ListPreloader.PreloadSizeProvider sizeProvider =
+                new FixedPreloadSizeProvider(imageWidthPixels, imageHeightPixels);
+        PreloadModelProvider modelProvider = new PreloadModelProvider(myDataSet,getApplicationContext());
+        RecyclerViewPreloader<Store> preloader = new RecyclerViewPreloader<Store>(
+                Glide.with(this), modelProvider, sizeProvider, 30 /*maxPreload*/);
+
+
+        recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
+
+        recyclerView.setHasFixedSize(true);
+        layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+        mAdapter = new MyAdapter(Glide.with(this),myDataSet,getApplicationContext());
+       recyclerView.addOnScrollListener(preloader);
+        recyclerView.setAdapter(mAdapter);
 
 
     }
